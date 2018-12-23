@@ -10,5 +10,8 @@ from app02 import views
 urlpatterns = [
 
 
-    path(r'app02_login/', views.login)
+    path(r'app02_login/', views.login),
+    # 名称空间
+    path(r'app_namespace_url/', views.app_namespace_url, name='app_namespace_url')
+
 ]
