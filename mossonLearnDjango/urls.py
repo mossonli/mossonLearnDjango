@@ -23,6 +23,6 @@ urlpatterns = [
 
 
     # 路由分发
-    path(r'app01/', include('app01.url')),
-    path(r'app02/', include('app02.url')),
+    path(r'app01/', include(('app01.url', "app01"))), # namespace 是url的名称空间
+    path(r'app02/', include(('app02.url', "app02"))),
 ]
