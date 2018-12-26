@@ -31,3 +31,15 @@ def app_namespace_url(request):
 def app01_url_converter_month(request, month):
 
     return HttpResponse(month)
+
+def templates_lan(request):
+    """
+    模版语法
+    {{}} 渲染变量，{%%}渲染标签
+    """
+    name = 'mosson'
+    age = 18
+    li = [1, 2, 3, 4]
+    dic = {'name': 'mosson', 'age': 18}
+    b = True
+    return render(request, 'templates_lan.html', locals())
