@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>自定义过滤器</h3>
+{% load filter_tags%}
+<p>{{ age|multi_filter:10 }}</p>
+</body>
+<h3>zi定义标签</h3>
+<p>{% multi_tag 2 3 5 %}</p>
+</html>
