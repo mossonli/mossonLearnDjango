@@ -26,5 +26,7 @@ urlpatterns = [
     # 在不同的app的url里面定义了相同的name，可能会导致url反解错误，使用名称空间进行解决
     path(r'app_namespace_url/', views.app_namespace_url, name='app_namespace_url'),
     # url的转换器
-    path(r'app01_url_converter_month/<int:month>/', views.app01_url_converter_month)
+    path(r'app01_url_converter_month/<int:month>/', views.app01_url_converter_month),
+    # 模版语法的url
+    path(r'templates_lan/', views.templates_lan),
 ]
