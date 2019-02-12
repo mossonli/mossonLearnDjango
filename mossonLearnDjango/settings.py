@@ -82,6 +82,7 @@ WSGI_APPLICATION = 'mossonLearnDjango.wsgi.application'
 #     }
 # }
 # mysql数据库配置
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -92,6 +93,7 @@ DATABASES = {
         'PORT':3306 #  端口 默认3306
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -135,3 +137,22 @@ STATIC_URL = '/static/' # 这个static是别名
 STATIC_FILES = [
     os.path.join(BASE_DIR, "static"), # static 是实际存放静态文件的目录
 ]
+
+# ORM 转sql 过程 在屏幕输出
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console':{
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level':'DEBUG',
+        },
+    }
+}
