@@ -29,4 +29,9 @@ urlpatterns = [
     path(r'app01_url_converter_month/<int:month>/', views.app01_url_converter_month),
     # 模版语法的url
     path(r'templates_lan/', views.templates_lan),
+    # orm操作
+    path('orm_operator/', views.orm_operator),
+    path('orm_mul_table', views.orm_mul_table),
+    # orm 跨表查询
+    path('orm_query', views.orm_query)
 ]
