@@ -31,7 +31,14 @@ urlpatterns = [
     path(r'templates_lan/', views.templates_lan),
     # orm操作
     path('orm_operator/', views.orm_operator),
-    path('orm_mul_table', views.orm_mul_table),
+    path('orm_mul_table/', views.orm_mul_table),
     # orm 跨表查询
-    path('orm_query', views.orm_query)
+    path('orm_query/', views.orm_query),
+    # from 验证
+    path(r'form_demo/', views.form_demo),
+    # form 的注册页面
+    path(r'form_register/', views.form_register),
+    # 用户认证组件
+    path(r'auth_login/', views.auth_login),
+    path(r'index/', views.index)
 ]

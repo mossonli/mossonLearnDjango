@@ -1,6 +1,7 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from django.urls import reverse # 用于url的反向解析
 
+from app01.app01form import UserForm
 from app01.models import *
 # Create your views here.
 
@@ -286,30 +287,44 @@ def orm_query(request):
     # 注意2 表模型.objects.filter(Q, 其他字段的键值对) Q放在前面
 
     print(ret)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return HttpResponse("OK")
 
 
+def form_demo(request):
 
+    return HttpResponse("ok")
 
+def form_register(request):
+    if request.method == "POST":
+        form = UserForm(request.POST) # form表单的name属性要与forms组建的字段名对应
+        print(form.is_valid())
+        if form.is_valid():
 
+            # 校验正确的键值存放在 form.cleaned_data
+            # 校验发生错误的存放在 form.errors
+            print(form.cleaned_data)
+        else:
+            print(form.errors)
+            # 获取错误信息
+            # print(form.errors.get('字段名')[0])
+            # 全局钩子错误
+            pwd_not_sam = form.errors.get('__all__')
+            return render(request, 'form_register.html', locals())
+    form = UserForm()
+    return render(request, 'form_register.html', locals())
 
+from django.contrib import auth
+def auth_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        ret = auth.authenticate(username=username, password=password)
+        if ret:
+            auth.login(request, username)# request.user = username(当前登录对象)
 
+            return redirect('/app01/index/')
 
+    return render(request, 'auth_login.html', locals())
+
+def index(request):
+    return render(request, 'index.html')

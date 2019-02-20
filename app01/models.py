@@ -55,3 +55,9 @@ class UserInfo(models.Model):
     pwd=models.CharField(max_length=32)
     email=models.EmailField()
     tel=models.CharField(max_length=32)
+    sex_list = (
+        (1, '男'),
+        (2, '女'),
+    )
+    sex = models.IntegerField(choices=sex_list, default=1)
+
