@@ -119,7 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+# 时区改成上海
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -134,7 +136,7 @@ USE_TZ = True
 STATIC_URL = '/static/' # 这个static是别名
 
 # 静态文件
-STATIC_FILES = [
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"), # static 是实际存放静态文件的目录
 ]
 
