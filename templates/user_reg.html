@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/user_reg/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>用户名：{{ form.name }}</p>
+    <p>密码：{{ form.pwd }}</p>
+    <p>邮箱：{{ form.email }}</p>
+    <p>性别：{{ form.sex }}</p>
+
+    <input type="submit" value="注册" />
+</form>
+
+</body>
+</html>

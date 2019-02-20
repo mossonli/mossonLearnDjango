@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 文件上传  -->
+<h1>基于form表单的文件上传</h1>
+<form action="" enctype="multipart/form-data">
+    文件 <input type="file" name="filename">
+    <input type="submit" value="文件上传">
+</form>
+<hr>
+<h1>基于ajax的文件上传</h1>
+<form action="" enctype="multipart/form-data">
+    用户 <input type="text" id="userid">
+    文件 <input type="file" id="ajaxfilename">
+    <input type="button" value="ajax文件上传" class="ajaxbtn">
+</form>
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script>
+    $('.ajaxbtn').click(function () {
+        // 文件上传的固定格式
+        var formdata = new FormData();
+        formdata.append('user', $('#userid').val());
+        formdata.append('filename', $('#ajaxfilename')[0].files[0]);
+        $.ajax({
+            url:"",
+            type:'post',
+            // 文件上传需要加的两个参数
+            contentType:false,
+            processData:false,
+            // js 序列化数据JSON.stringfy()
+            data:formdata,
+            success:function (data) {
+
+            }
+        })
+    })
+</script>
+</body>
+</html>

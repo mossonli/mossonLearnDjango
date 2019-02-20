@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>ajax demo</h2>
+    <button class="btn">BTN</button>
+    <hr>
+
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script>
+    $('.btn').click(function () {
+        $.ajax({
+            url:"",     //请求的url
+            type:"",    //请求方式 get post 。。。
+            data:{},    //请求参数
+            //成功的回调函数
+            success:function (data) {
+                console.log(data);
+                // js反序列化json
+                new_data = JSON.parse(data)
+            }
+        })
+    })
+</script>
+</body>
+</html>

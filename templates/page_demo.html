@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/plug/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+</head>
+<body>
+<!--  页面展示书籍内容   -->
+<ul>
+    {% for book in book_list %}
+    <li>{{book.title}}</li>
+    {% endfor %}
+</ul>
+<table>
+<thead>
+    <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>操作</th>
+    </tr>
+</thead>
+<tbody>
+
+{% for book in book_list %}
+    <tr>
+        <td>{{book.nid}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.price}}</td>
+        <td><button value="{{book.nid}}" onclick="show(this.value)">编辑</button></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+
+<!--  页脚的页码  分页器     -->
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        {%if book_list.has_previous%}
+            <li>
+                <a href="?page={{book_list.previous_page_number}}" aria-label="Previous">
+                    <span aria-hidden="true">上一页</span>
+                </a>
+            </li>
+        {%else%}
+            <li class="disabled">
+                <a href="" aria-label="Previous">
+                    <span aria-hidden="true">上一页</span>
+                </a>
+            </li>
+        {%endif%}
+
+        {%for i in page_range%}
+            {% if current_page == i %}
+                <li class="active"><a href="?page={{i}}">{{i}}</a></li>
+            {%else%}
+                <li><a href="?page={{i}}">{{i}}</a></li>
+            {%endif%}
+
+        {%endfor%}
+
+        {%if book_list.has_previous%}
+            <li>
+                <a href="?page={{book_list.next_page_number}}" aria-label="Next">
+                    <span aria-hidden="true">下一页</span>
+                </a>
+            </li>
+        {%else%}
+            <li class="disabled">
+                <a href="" aria-label="Next">
+                    <span aria-hidden="true">下一页</span>
+                </a>
+            </li>
+        {%endif%}
+    </ul>
+</nav>
+
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script>
+    function show(ths) {
+        // 这个 ths 就是 书籍的nid
+        console.log(ths)
+    }
+</script>
+</body>
+</html>

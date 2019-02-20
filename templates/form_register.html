@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--  手写form   -->
+<form action="" method="post">
+    {% csrf_token %}
+    <p>用户名：<input type="text" name="name"></p>
+    <p>密  码：<input type="text" name="pwd"></p>
+    <p>确认密码：<input type="text" name="repwd"></p>
+    <p>邮箱：<input type="text" name="email"></p>
+    <p>手机号：<input type="text" name="tel"></p>
+    <input type="submit" value="注册">
+</form>
+<!-- forms 组件渲染的方式  -->
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+    <p>用户名：{{ form.name }}<span>{{form.name.errors.0}}</span></p>
+    <p>密  码：{{ form.pwd }}<span>{{form.pwd.errors.0}}</span></p>
+    <p>确认密码：{{form.repwd}}<span>{{form.repwd.errors.0}}</span><span>{{pwd_not_sam.0}}</span></p>
+    <p>邮箱：{{form.email}}<span>{{form.email.errors.0}}</span></p>
+    <p>手机号：{{form.tel}}<span>{{form.tel.errors.0}}</span></p>
+    <input type="submit" value="注册">
+</form>
+</body>
+</html>
